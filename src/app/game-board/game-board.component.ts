@@ -66,7 +66,7 @@ export class GameBoardComponent implements AfterViewInit {
 
     const col = Math.floor(x / this.cellSize());
     const row = Math.floor(y / this.cellSize());
-    const position = [col, row] as Point;
+    const position = [col - 1, row - 1] as Point;
 
     if (this.board.canMoveTo(position)) {
       this.board.move(position);
@@ -81,7 +81,7 @@ export class GameBoardComponent implements AfterViewInit {
 
     canvasEl.width = size;
     canvasEl.height = size;
-    this.cellSize.set(size / gridSize[0]);
+    this.cellSize.set(size / (gridSize[0] + 2));
 
     // Antialiasing
     this.ctx.translate(0.5, 0.5);
@@ -106,8 +106,8 @@ export class GameBoardComponent implements AfterViewInit {
         const color = (i + j) % 2 === 0 ? '#B8B285' : '#39793B';
         this.ctx.fillStyle = color;
         this.ctx.fillRect(
-          j * this.cellSize() + gap,
-          i * this.cellSize() + gap,
+          this.cellSize() + j * this.cellSize() + gap,
+          this.cellSize() + i * this.cellSize() + gap,
           this.cellSize() - gap * 2,
           this.cellSize() - gap * 2,
         );
@@ -117,7 +117,8 @@ export class GameBoardComponent implements AfterViewInit {
 
   private drawKnight() {
     const gridPosition = this.board.knight();
-    const offset = this.cellSize() / 2 - this.knightSize() / 2;
+    const offset =
+      this.cellSize() + this.cellSize() / 2 - this.knightSize() / 2;
     const position = [
       gridPosition[0] * this.cellSize() + offset,
       gridPosition[1] * this.cellSize() + offset,
@@ -140,8 +141,8 @@ export class GameBoardComponent implements AfterViewInit {
       this.ctx.lineWidth = 3;
 
       this.ctx.strokeRect(
-        position[0] * this.cellSize(),
-        position[1] * this.cellSize(),
+        this.cellSize() + position[0] * this.cellSize(),
+        this.cellSize() + position[1] * this.cellSize(),
         this.cellSize(),
         this.cellSize(),
       );
@@ -163,7 +164,11 @@ export class GameBoardComponent implements AfterViewInit {
         gridPosition[1] * this.cellSize() + this.cellSize() / 2,
       ];
 
-      this.ctx.fillText(counter.toString(), position[0], position[1]);
+      this.ctx.fillText(
+        counter.toString(),
+        this.cellSize() + position[0],
+        this.cellSize() + position[1],
+      );
       counter++;
     }
   }
