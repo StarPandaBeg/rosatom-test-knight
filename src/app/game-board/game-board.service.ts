@@ -5,7 +5,7 @@ export interface GameBoardServiceConfig {
   height: number;
 }
 export type Point = [number, number];
-export type GameState = 'running' | 'win' | 'gameover';
+export type GameState = 'initial' | 'running' | 'win' | 'gameover';
 
 /** The direction is specified as two numbers:
  * the first defines the cardinal direction (0 for North, 1 for East, 2 for South, 3 for West),
@@ -17,7 +17,7 @@ type Direction = [number, number];
   providedIn: 'root',
 })
 export class GameBoardService {
-  private state = signal<GameState>('running');
+  private state = signal<GameState>('initial');
   private boardSize: Point;
   private knightPosition = signal<Point>([0, 0]);
   private possiblePositions = computed(() => this.calculatePossiblePositions());
@@ -45,6 +45,10 @@ export class GameBoardService {
 
   get gameState() {
     return this.state.asReadonly();
+  }
+
+  get turns() {
+    return this.visitedCells.length;
   }
 
   positionToString(position: Point) {
@@ -118,6 +122,11 @@ export class GameBoardService {
   }
 
   private updateState() {
+    if (this.visited.length == 0) {
+      this.state.set('initial');
+      return;
+    }
+
     const totalCells = this.boardSize[0] * this.boardSize[1];
     if (this.possiblePositions().length != 0) {
       this.state.set('running');
