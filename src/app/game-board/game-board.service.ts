@@ -47,6 +47,12 @@ export class GameBoardService {
     return this.state.asReadonly();
   }
 
+  positionToString(position: Point) {
+    const letterOffset = this.boardSize[0] - position[0] - 1;
+    const letter = String.fromCharCode(65 + letterOffset);
+    return `${letter}${position[1] + 1}`;
+  }
+
   initialize(config: GameBoardServiceConfig) {
     this.boardSize = [config.width, config.height];
     this.knightPosition.set([0, 0]);

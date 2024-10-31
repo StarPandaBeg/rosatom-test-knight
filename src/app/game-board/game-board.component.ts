@@ -91,10 +91,41 @@ export class GameBoardComponent implements AfterViewInit {
     const canvasEl = this.canvas.nativeElement;
     this.ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
 
+    this.drawLabels();
     this.drawGrid();
     this.drawKnight();
     this.drawVisited();
     this.drawOverlay();
+  }
+
+  private drawLabels() {
+    const size = this.board.size;
+
+    this.ctx.font = `${this.cellSize() / 4}pt Geologica`;
+    this.ctx.fillStyle = 'rgba(255,255,255,.2)';
+    this.ctx.textAlign = 'center';
+    this.ctx.textBaseline = 'top';
+
+    for (let i = 0; i < size[0]; i++) {
+      const posS = this.board.positionToString([i, 0]);
+      this.ctx.fillText(
+        posS[0],
+        this.cellSize() + this.cellSize() * i + this.cellSize() / 2,
+        this.cellSize() / 2,
+      );
+    }
+
+    this.ctx.textAlign = 'start';
+    this.ctx.textBaseline = 'middle';
+
+    for (let i = 0; i < size[1]; i++) {
+      const posS = this.board.positionToString([0, i]);
+      this.ctx.fillText(
+        posS.slice(1),
+        this.cellSize() / 2,
+        this.cellSize() + this.cellSize() * i + this.cellSize() / 2,
+      );
+    }
   }
 
   private drawGrid() {
