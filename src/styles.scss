@@ -8,4 +8,13 @@ html,
 body {
   font-family: "Geologica", sans-serif;
   font-optical-sizing: auto;
+
+  background: var(--background);
+  color: var(--text-primary);
+}
+
+:root {
+  --background: #1d1f24;
+  --text-primary: #cccccc;
+  --text-muted: #999999;
 }

@@ -1,9 +1,16 @@
-<main>
-  <div></div>
-  <div class="board-container">
+<section>
+  <header class="board-header">
+    <div class="board-header__info">
+      <app-turn-label />
+    </div>
+    <div class="board-header__timer">
+      <app-game-timer />
+    </div>
+  </header>
+  <main class="board-container">
     <app-game-board />
-  </div>
-  <div></div>
-</main>
+  </main>
+  <footer></footer>
+</section>
 
 <router-outlet />
