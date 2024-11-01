@@ -1,3 +1,5 @@
+@import url(app/shared/directives/directives.scss);
+
 * {
   margin: 0;
   padding: 0;
@@ -20,4 +22,9 @@ body {
 
   --primary: #39793b;
   --secondary: #b8b285;
+  --accent: #69df6d;
+
+  --primary-foreground: #ffffff;
+  --secondary-foreground: #ffffff;
+  --accent-foreground: #ffffff;
 }
