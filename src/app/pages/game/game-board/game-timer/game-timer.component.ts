@@ -21,6 +21,7 @@ export class GameTimerComponent implements OnDestroy {
   ) {
     effect(() => {
       const state = this.board.gameState();
+      if (state === 'initial') this.reset();
       if (state === 'running') this.start();
       else this.stop();
     });
@@ -50,5 +51,10 @@ export class GameTimerComponent implements OnDestroy {
       clearInterval(this.timerInterval);
       this.timerInterval = null;
     }
+  }
+
+  private reset() {
+    this.minutes = 0;
+    this.seconds = 0;
   }
 }
