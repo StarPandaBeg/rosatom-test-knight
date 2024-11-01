@@ -13,6 +13,7 @@ import { GameBoardComponent } from './game-board/game-board.component';
 import { GameBoardService, GameState } from './game-board/game-board.service';
 import { GameTimerComponent } from './game-board/game-timer/game-timer.component';
 import { TurnLabelComponent } from './game-board/turn-label/turn-label.component';
+import { VisitedLabelComponent } from './game-board/visited-label/visited-label.component';
 import { GameEndModalComponent } from './game-end-modal/game-end-modal.component';
 
 @Component({
@@ -23,6 +24,7 @@ import { GameEndModalComponent } from './game-end-modal/game-end-modal.component
     TurnLabelComponent,
     GameTimerComponent,
     GameEndModalComponent,
+    VisitedLabelComponent,
     LucideAngularModule,
     ButtonDirective,
   ],

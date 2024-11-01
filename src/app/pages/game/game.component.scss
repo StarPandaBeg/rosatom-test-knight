@@ -36,6 +36,11 @@ section {
     text-align: center;
   }
 
+  .board-footer {
+    text-align: center;
+    color: var(--text-muted);
+  }
+
   @media screen and (max-width: 600px) {
     grid-template-rows: auto auto 1fr;
 
