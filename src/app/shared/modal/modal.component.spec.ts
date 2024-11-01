@@ -62,4 +62,41 @@ describe('ModalComponent', () => {
     button.click();
     expect(component.close).toHaveBeenCalled();
   });
+
+  it('should close on click outside', () => {
+    spyOn(component, 'close');
+
+    component.modalVisible = true;
+    fixture.detectChanges();
+
+    const modal = fixture.nativeElement as HTMLDivElement;
+    const overlay = modal.querySelector('.modal') as HTMLDivElement;
+    overlay.click();
+    expect(component.close).toHaveBeenCalled();
+  });
+
+  it('shouldn`t close on click on content', () => {
+    spyOn(component, 'close');
+
+    component.modalVisible = true;
+    fixture.detectChanges();
+
+    const modal = fixture.nativeElement as HTMLDivElement;
+    const content = modal.querySelector('.modal__content') as HTMLDivElement;
+    content.click();
+    expect(component.close).not.toHaveBeenCalled();
+  });
+
+  it('shouldn`t close on click outside when disabled', () => {
+    spyOn(component, 'close');
+
+    component.modalVisible = true;
+    component.closeOnClick = false;
+    fixture.detectChanges();
+
+    const modal = fixture.nativeElement as HTMLDivElement;
+    const overlay = modal.querySelector('.modal') as HTMLDivElement;
+    overlay.click();
+    expect(component.close).not.toHaveBeenCalled();
+  });
 });

@@ -2,14 +2,14 @@
   <div
     @overlayAnimation
     (@overlayAnimation.done)="onAnimationDone($event)"
-    (click)="close()"
-    (keyup.esc)="close()"
+    (click)="tryClose()"
+    (keyup.esc)="tryClose()"
     class="modal"
     aria-hidden="false"
     aria-modal="true"
     role="dialog"
   >
-    <div @contentAnimation class="modal__content">
+    <div appStopPropogation @contentAnimation class="modal__content">
       <ng-content />
     </div>
     <button class="modal__close" (click)="close()">X</button>
