@@ -1,14 +1,37 @@
 <section>
   <header class="board-header">
-    <div class="board-header__info">
-      <app-turn-label />
-    </div>
-    <div class="board-header__timer">
-      <app-game-timer />
+    <app-game-end-modal
+      [isWinner]="isWinner"
+      [isOpen]="isEndModalOpened"
+      [timeTotal]="timeTotal"
+      [turnsTotal]="turnsTotal"
+      (home)="home()"
+      (reset)="restart()"
+    />
+    <div class="board-header__container">
+      <div class="board-header-control">
+        <button appButton title="В меню" (click)="home()">
+          <lucide-icon name="house" strokeWidth="3"></lucide-icon>
+        </button>
+        <button appButton title="Перезапуск" (click)="restart()">
+          <lucide-icon name="refresh-ccw" strokeWidth="3"></lucide-icon>
+        </button>
+      </div>
+      <div class="board-header-info">
+        <div class="board-header-info__info">
+          <app-turn-label />
+        </div>
+        <div class="board-header-info__timer">
+          <app-game-timer />
+        </div>
+      </div>
     </div>
   </header>
   <main class="board-container">
-    <app-game-board />
+    <app-game-board
+      style="width: 100%; height: 100%; display: block"
+      [@restartAnimation]="flipOnRestart ? 'flipped' : 'default'"
+    />
   </main>
   <footer></footer>
 </section>
