@@ -1,0 +1,36 @@
+section {
+  min-height: 90vh;
+
+  padding: 40px 20px;
+  display: grid;
+  grid-template-rows: min-content auto 100px;
+  justify-content: center;
+
+  header {
+    text-align: center;
+
+    img {
+      width: 128px;
+    }
+    h1 {
+      padding-top: 20px;
+      font-size: 32px;
+    }
+  }
+
+  main {
+    padding: 80px 0;
+    text-align: center;
+  }
+
+  footer {
+    align-content: end;
+    text-align: center;
+    color: var(--text-muted);
+
+    a {
+      font-size: small;
+      color: var(--text-muted);
+    }
+  }
+}
