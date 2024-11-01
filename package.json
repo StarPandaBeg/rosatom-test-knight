@@ -31,6 +31,7 @@
     "@angular/cli": "^18.2.10",
     "@angular/compiler-cli": "^18.2.0",
     "@types/jasmine": "~5.1.0",
+    "angular-cli-ghpages": "^2.0.3",
     "angular-eslint": "18.4.0",
     "eslint": "^9.13.0",
     "eslint-config-prettier": "^9.1.0",
