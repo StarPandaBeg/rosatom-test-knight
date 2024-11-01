@@ -2,10 +2,15 @@ import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { provideAnimations } from '@angular/platform-browser/animations';
-import { LUCIDE_ICONS, LucideIconProvider, RefreshCcw } from 'lucide-angular';
+import {
+  House,
+  LUCIDE_ICONS,
+  LucideIconProvider,
+  RefreshCcw,
+} from 'lucide-angular';
 import { routes } from './app.routes';
 
-const usedIcons = { RefreshCcw };
+const usedIcons = { RefreshCcw, House };
 
 export const appConfig: ApplicationConfig = {
   providers: [

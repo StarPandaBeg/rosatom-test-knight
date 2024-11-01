@@ -1,0 +1,22 @@
+<app-modal
+  [closeOnClick]="false"
+  [showModal]="isOpen"
+  (toggleModal)="toggleOpen($event)"
+  style="text-align: center"
+  class="game-end-modal"
+>
+  <header appModalTitle>{{ modalTitle }}</header>
+  <main class="game-end-modal__content">
+    <p>Итого времени: {{ timeTotal }}</p>
+    <p>Итого шагов: {{ turnsTotal }}</p>
+  </main>
+  <footer>
+    <button appButton title="В меню" (click)="home.emit()">
+      <lucide-icon name="house" strokeWidth="3"></lucide-icon>
+    </button>
+    <button appButton title="Заново" (click)="reset.emit()">
+      <lucide-icon name="refresh-ccw" strokeWidth="3"></lucide-icon>
+      Заново
+    </button>
+  </footer>
+</app-modal>

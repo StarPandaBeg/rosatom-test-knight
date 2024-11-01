@@ -1,0 +1,10 @@
+.game-end-modal {
+  &__content {
+    padding: 20px 0;
+  }
+  footer {
+    & > *:not(:first-child) {
+      margin-left: 10px;
+    }
+  }
+}
