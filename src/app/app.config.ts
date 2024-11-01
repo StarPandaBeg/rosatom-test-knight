@@ -3,6 +3,9 @@ import { provideRouter } from '@angular/router';
 
 import { provideAnimations } from '@angular/platform-browser/animations';
 import {
+  Dice1,
+  Dice2,
+  Dice3,
   House,
   LUCIDE_ICONS,
   LucideIconProvider,
@@ -10,7 +13,7 @@ import {
 } from 'lucide-angular';
 import { routes } from './app.routes';
 
-const usedIcons = { RefreshCcw, House };
+const usedIcons = { RefreshCcw, House, Dice1, Dice2, Dice3 };
 
 export const appConfig: ApplicationConfig = {
   providers: [
