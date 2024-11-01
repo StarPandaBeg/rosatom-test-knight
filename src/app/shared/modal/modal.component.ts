@@ -1,7 +1,6 @@
 import { AnimationEvent } from '@angular/animations';
 import {
   Component,
-  HostBinding,
   Input,
   OnChanges,
   output,
@@ -11,8 +10,6 @@ import {
 import { StopPropogationDirective } from '../directives/stop-propogation.directive';
 import { ModalTitleDirective } from './modal-title.directive';
 import { contentAnimation, overlayAnimation } from './modal.animation';
-
-type AnimationState = 'open' | 'close';
 
 @Component({
   selector: 'app-modal',
@@ -27,10 +24,10 @@ export class ModalComponent implements OnChanges {
   @Input() showModal = false;
   @Input() closeOnClick = true;
 
-  @HostBinding('@overlayAnimation') animationState: AnimationState = 'close';
   toggleModal = output<boolean>();
 
   modalVisible = false;
+  skipAnimation = false;
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['showModal']) {
@@ -39,6 +36,10 @@ export class ModalComponent implements OnChanges {
   }
 
   onAnimationDone(event: AnimationEvent) {
+    if (this.skipAnimation) {
+      this.skipAnimation = false;
+      return;
+    }
     if (event.toState === 'void') {
       this.toggleModal.emit(false);
     }
@@ -48,8 +49,9 @@ export class ModalComponent implements OnChanges {
     this.toggleModal.emit(true);
   }
 
-  close() {
-    this.modalVisible = false;
+  close(force = false) {
+    this.skipAnimation = force;
+    if (force) this.toggleModal.emit(false);
   }
 
   tryClose() {

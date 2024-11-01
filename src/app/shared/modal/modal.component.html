@@ -1,5 +1,6 @@
 @if (modalVisible) {
   <div
+    [@.disabled]="skipAnimation"
     @overlayAnimation
     (@overlayAnimation.done)="onAnimationDone($event)"
     (click)="tryClose()"
