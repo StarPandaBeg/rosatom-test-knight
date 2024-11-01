@@ -59,6 +59,10 @@ export class GameBoardService {
 
   initialize(config: GameBoardServiceConfig) {
     this.boardSize = [config.width, config.height];
+    this.reset();
+  }
+
+  reset() {
     this.knightPosition.set([0, 0]);
     this.visitedCells = [];
     this.updateState();
