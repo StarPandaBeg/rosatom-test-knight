@@ -5,7 +5,7 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
-import { Component, effect, ViewChild } from '@angular/core';
+import { Component, effect, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { LucideAngularModule } from 'lucide-angular';
 import { ButtonDirective } from '../../shared/directives/app-button.directive';
@@ -43,7 +43,7 @@ import { GameEndModalComponent } from './game-end-modal/game-end-modal.component
   templateUrl: './game.component.html',
   styleUrl: './game.component.scss',
 })
-export class PageGameComponent {
+export class PageGameComponent implements OnInit {
   @ViewChild(GameTimerComponent)
   private timer!: GameTimerComponent;
   @ViewChild(GameEndModalComponent)
@@ -61,6 +61,15 @@ export class PageGameComponent {
       const state = this.board.gameState();
       this.onStateUpdate(state);
     });
+  }
+
+  ngOnInit(): void {
+    const deskSize = window.history.state.level as number | undefined;
+    if (deskSize === undefined) {
+      this.router.navigateByUrl('/level-select', { replaceUrl: true });
+      return;
+    }
+    this.board.initialize({ width: deskSize, height: deskSize });
   }
 
   get isWinner() {
@@ -82,6 +91,10 @@ export class PageGameComponent {
 
   get flipOnRestart() {
     return this.flip;
+  }
+
+  get boardSize() {
+    return `${this.board.size[0]}x${this.board.size[1]}`;
   }
 
   home() {
