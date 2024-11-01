@@ -1,0 +1,6 @@
+<p>
+  {{ isEllipsis ? "... -" : "" }}
+  @for (label of visitedAsLabels; track $index) {
+    {{ label }} {{ $last ? "" : "-" }}
+  }
+</p>

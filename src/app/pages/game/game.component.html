@@ -1,0 +1,52 @@
+<section>
+  <header class="board-header">
+    <app-game-end-modal
+      [isWinner]="isWinner"
+      [isOpen]="isEndModalOpened"
+      [timeTotal]="timeTotal"
+      [turnsTotal]="turnsTotal"
+      (home)="home()"
+      (reset)="restart()"
+    />
+    <div class="board-header__container">
+      <div class="board-header-control">
+        <button appButton title="В меню" (click)="home()">
+          <lucide-icon name="house" strokeWidth="3"></lucide-icon>
+        </button>
+        <button appButton title="Перезапуск" (click)="restart()">
+          <lucide-icon name="refresh-ccw" strokeWidth="3"></lucide-icon>
+        </button>
+        @if (canUndo) {
+          <button class="board-header-control__undo" appButton (click)="undo()">
+            <lucide-icon name="undo" strokeWidth="3"></lucide-icon>
+          </button>
+        }
+      </div>
+      <div class="board-header-info">
+        <div class="board-header-info__info">
+          Размер поля: {{ boardSize }}
+          <app-turn-label />
+        </div>
+        <div class="board-header-info__timer">
+          <app-game-timer />
+        </div>
+      </div>
+      <div class="board-header-undo">
+        @if (canUndo) {
+          <button appButton (click)="undo()">
+            <lucide-icon name="undo" strokeWidth="3"></lucide-icon>
+          </button>
+        }
+      </div>
+    </div>
+  </header>
+  <main class="board-container">
+    <app-game-board
+      style="width: 100%; height: 100%; display: block"
+      [@restartAnimation]="flipOnRestart ? 'flipped' : 'default'"
+    />
+  </main>
+  <footer class="board-footer">
+    <app-visited-label />
+  </footer>
+</section>

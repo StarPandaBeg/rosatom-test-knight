@@ -1,0 +1,55 @@
+<section>
+  <header>
+    <h1>Выберите уровень</h1>
+  </header>
+  <main>
+    <ul>
+      <input
+        type="radio"
+        name="difficulty"
+        value="easy"
+        id="dif-easy"
+        [(ngModel)]="selectedDifficulty"
+      />
+      <li>
+        <label for="dif-easy">
+          <lucide-icon class="icon" name="dice-1" size="96"></lucide-icon>
+          <h1>Лёгкий</h1>
+          <p>Поле {{ deskSizes.easy }}х{{ deskSizes.easy }}</p>
+        </label>
+      </li>
+      <input
+        type="radio"
+        name="difficulty"
+        value="medium"
+        id="dif-medium"
+        [(ngModel)]="selectedDifficulty"
+      />
+      <li>
+        <label for="dif-medium">
+          <lucide-icon class="icon" name="dice-2" size="96"></lucide-icon>
+          <h1>Средний</h1>
+          <p>Поле {{ deskSizes.medium }}х{{ deskSizes.medium }}</p>
+        </label>
+      </li>
+      <input
+        type="radio"
+        name="difficulty"
+        value="hard"
+        id="dif-hard"
+        [(ngModel)]="selectedDifficulty"
+      />
+      <li>
+        <label for="dif-hard">
+          <lucide-icon class="icon" name="dice-3" size="96"></lucide-icon>
+          <h1>Тяжелый</h1>
+          <p>Поле {{ deskSizes.hard }}х{{ deskSizes.hard }}</p>
+        </label>
+      </li>
+    </ul>
+  </main>
+  <footer>
+    <button appButton (click)="play()">Играть</button>
+    <a routerLink="/" appButton>Назад</a>
+  </footer>
+</section>

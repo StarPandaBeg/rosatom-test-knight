@@ -1,27 +1,67 @@
-# AtomKnight
+# Атомный Конь - игра
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.10.
+[Тестовое задание](https://github.com/notafavor/test-cases/blob/main/case_3.md) для стажировки в РосАтом.
 
-## Development server
+> ✅ [Демо проекта](https://starpandabeg.github.io/rosatom-test-knight/)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+![](.github/screenshot.png)
 
-## Code scaffolding
+## Правила игры
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+На игровой доске, подобной шахматной, игрок управляет фигуркой коня.
 
-## Build
+Конь может ходить буквой "Г": на две клетки в одном направлении и одну в перпендикулярном, или наоборот.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Цель игры - посетить каждую клетку поля только один раз. Доказано, что для любого поля размером 5х5 и выше решение точно есть!
 
-## Running unit tests
+## Функционал
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- Доска для игры динамического размера
+- Выбор сложности игры - размера доски
+- Возможность отмены последнего хода
+- История ходов
+- Адаптивный интерфейс - хорошо выглядит и на ПК, и на планшете
+- Таймер игры
 
-## Running end-to-end tests
+## Использованные технологии и библиотеки
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- Angular 18
+- Lucide Icons
+- TypeScript
+- Eslint
+- Prettier
 
-## Further help
+## Сборка и запуск
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+### Отладка
+
+Для запуска приложения в отладочном режиме необходимо:
+
+1. Установить пакеты
+   ```bash
+   $ npm i
+   ```
+2. Запустить отладочный сервер
+   ```bash
+   $ npm start
+   ```
+
+Приложение будет доступно по адресу `http://localhost:4200/`. Сервер будет автоматически перезапускаться при любых изменениях в коде.
+
+### Тестирование
+
+Для тестирования используется встроенная в Angular библиотека Jasmine.
+
+```bash
+$ npm run test
+```
+
+### Развертывание
+
+Для развертывания потребуется Docker. Образ основан на `nginx:1.27-alpine`, использует многоступенчатую сборку для оптимизации процесса.
+
+```bash
+$ docker compose up -d --build
+```
+
+После сборки приложение будет доступно по адресу `http://localhost:8080/`

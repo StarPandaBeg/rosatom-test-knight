@@ -1,0 +1,18 @@
+@if (modalVisible) {
+  <div
+    [@.disabled]="skipAnimation"
+    @overlayAnimation
+    (@overlayAnimation.done)="onAnimationDone($event)"
+    (click)="tryClose()"
+    (keyup.esc)="tryClose()"
+    class="modal"
+    aria-hidden="false"
+    aria-modal="true"
+    role="dialog"
+  >
+    <div appStopPropogation @contentAnimation class="modal__content">
+      <ng-content />
+    </div>
+    <button class="modal__close" (click)="close()">X</button>
+  </div>
+}

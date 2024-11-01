@@ -1,1 +1,30 @@
-/* You can add global styles to this file, and also import other style files */
+@import url(app/shared/directives/directives.scss);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: "Geologica", sans-serif;
+  font-optical-sizing: auto;
+
+  background: var(--background);
+  color: var(--text-primary);
+}
+
+:root {
+  --background: #1d1f24;
+  --text-primary: #cccccc;
+  --text-muted: #999999;
+
+  --primary: #39793b;
+  --secondary: #b8b285;
+  --accent: #69df6d;
+
+  --primary-foreground: #ffffff;
+  --secondary-foreground: #ffffff;
+  --accent-foreground: #ffffff;
+}
