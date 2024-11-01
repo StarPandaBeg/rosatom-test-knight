@@ -10,10 +10,11 @@ import {
   LUCIDE_ICONS,
   LucideIconProvider,
   RefreshCcw,
+  Undo,
 } from 'lucide-angular';
 import { routes } from './app.routes';
 
-const usedIcons = { RefreshCcw, House, Dice1, Dice2, Dice3 };
+const usedIcons = { RefreshCcw, House, Dice1, Dice2, Dice3, Undo };
 
 export const appConfig: ApplicationConfig = {
   providers: [

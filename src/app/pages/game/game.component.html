@@ -16,6 +16,11 @@
         <button appButton title="Перезапуск" (click)="restart()">
           <lucide-icon name="refresh-ccw" strokeWidth="3"></lucide-icon>
         </button>
+        @if (canUndo) {
+          <button class="board-header-control__undo" appButton (click)="undo()">
+            <lucide-icon name="undo" strokeWidth="3"></lucide-icon>
+          </button>
+        }
       </div>
       <div class="board-header-info">
         <div class="board-header-info__info">
@@ -25,6 +30,13 @@
         <div class="board-header-info__timer">
           <app-game-timer />
         </div>
+      </div>
+      <div class="board-header-undo">
+        @if (canUndo) {
+          <button appButton (click)="undo()">
+            <lucide-icon name="undo" strokeWidth="3"></lucide-icon>
+          </button>
+        }
       </div>
     </div>
   </header>

@@ -99,6 +99,10 @@ export class PageGameComponent implements OnInit {
     return `${this.board.size[0]}x${this.board.size[1]}`;
   }
 
+  get canUndo() {
+    return this.board.canUndo;
+  }
+
   home() {
     this.modal.close(true);
     this.router.navigateByUrl('/');
@@ -107,6 +111,10 @@ export class PageGameComponent implements OnInit {
   restart() {
     this.flip = !this.flip;
     this.board.reset();
+  }
+
+  undo() {
+    this.board.undo();
   }
 
   private onStateUpdate(state: GameState) {

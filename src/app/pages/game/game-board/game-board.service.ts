@@ -51,6 +51,10 @@ export class GameBoardService {
     return this.visitedCells.length;
   }
 
+  get canUndo() {
+    return this.turns > 0;
+  }
+
   positionToString(position: Point) {
     const letterOffset = this.boardSize[0] - position[0] - 1;
     const letter = String.fromCharCode(65 + letterOffset);
@@ -84,6 +88,13 @@ export class GameBoardService {
   move(point: Point) {
     if (!this.canMoveTo(point)) throw Error('Invalid position');
     this.visitedCells.push(this.knightPosition());
+    this.knightPosition.set(point);
+    this.updateState();
+  }
+
+  undo() {
+    if (!this.canUndo) throw Error('Cannot undo');
+    const point = this.visitedCells.pop()!;
     this.knightPosition.set(point);
     this.updateState();
   }
