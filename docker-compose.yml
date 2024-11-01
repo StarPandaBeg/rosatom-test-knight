@@ -1,0 +1,8 @@
+services:
+  knight-app:
+    container_name: knight-app
+    restart: always
+    build:
+      context: .
+    ports:
+      - 8080:80
